@@ -30,9 +30,29 @@ def get_io_from_behavior(behaviors: List[Behavior]) -> Dict[str, IOAutomaton]:
                 message_out=block.messageout,
                 return_v=block.return_v
             )
-            io_automaton.transitions.append(transition)
+            # Check for duplicate transitions
+            duplicate_found = False
+            for existing_transition in io_automaton.transitions:
+                if (existing_transition.from_transition == transition.from_transition and
+                        existing_transition.to_transition == transition.to_transition and
+                        existing_transition.message_in == transition.message_in and
+                        existing_transition.return_v == transition.return_v):
+                    existing_transition.message_out.extend(transition.message_out)
+                    duplicate_found = True
+                    break
+
+            if not duplicate_found:
+                io_automaton.transitions.append(transition)
+
+            # Remove duplicate output messages
+    for obj, io_automaton in automata.items():
+        for transition in io_automaton.transitions:
+            transition.message_out = list(dict.fromkeys(transition.message_out))
+        io_automaton.states = list(io_automaton.states)
 
     return automata
+
+
 
 
 # Example usage
@@ -98,5 +118,3 @@ for obj, automaton in io_automata.items():
 #    destination: str = "result.uml"
 #    print("I am writing res to destination")
 #    pass
-
-
