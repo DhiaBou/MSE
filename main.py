@@ -1,81 +1,27 @@
-class Scenario:
-    prestate: str
-    sender: str
-    operation: str
-    receiver: str
-    return_v: str
-    post_state: str
-
-
-class BehaviorBlock:
-    prestate: str
-    messagee_in: str
-    messageout: list[tuple[str]]
-    return_v: str
-    poststate: str
-
-
-class Behavior:
-    scenario_name: str
-    object: str
-    behavior: list[BehaviorBlock]
-
-
-class Transition:
-    from_transition: str
-    to_transition: str
-    message_in: str
-    message_out: list[tuple[str]]
-    return_v: str
-
-
-class IOAutomaton:
-    states: list[str]
-    transitions: list[Transition]
-
-
-class Transition:
-    from_transition: str
-    to_transition: str
-    message_in: str
-    message_out: list[tuple[str]]
-    return_v: str
+from MSE.step1 import xml_to_table
+from MSE.step2 import projections_to_behavior, table_to_projections
+from MSE.step3 import get_io_from_behavior, write_to_uml, xml_to_table
+from MSE.models import *
 
 
 xml_file = "hi.xml"
 
-# Dhia
-def xml_to_table(xml_file: str) -> list[Scenario]:
-    pass
-
 
 table = xml_to_table(xml_file)
 
-
-# key is object, value is list of scenarios
-def table_to_projections(table: list[Scenario]) -> dict[str : list[Scenario]]:
-    pass
+print(table)
 
 
 projections = table_to_projections(table)
 
-
-def projections_to_behavior(projections: dict[str : list[Scenario]]) -> list[Behavior]:
-    pass
-
+print(projections)
 
 behavior = projections_to_behavior(projections)
 
-
-def get_io_from_behavior(behavior: list[Behavior]) -> dict[str:IOAutomaton]:
-    pass
-
+print(behavior)
 
 io_automaton = get_io_from_behavior(behavior)
 
+print(io_automaton)
 
-def write_to_uml(io_automaton: dict[str:IOAutomaton]) -> None:
-    res: str = ""
-    destination: str = "result.uml"
-    print("I am writing res to destination")
-    pass
+write_to_uml(io_automaton)
