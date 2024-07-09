@@ -14,7 +14,7 @@ class Scenario:
 
 
 class BehaviorBlock:
-    def __init__(self, prestate: str, messagee_in: str, messageout: List[Tuple[str]], return_v: str, poststate: str):
+    def __init__(self, prestate: str, messagee_in: str, messageout: list[Tuple[str,str,str]], return_v: str, poststate: str):
         self.prestate = prestate
         self.messagee_in = messagee_in
         self.messageout = messageout
