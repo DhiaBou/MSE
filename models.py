@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import Tuple
 
 class Scenario:
     def __init__(self, prestate: str, sender: str, operation: str, receiver: str, return_v: str, post_state: str):
@@ -26,7 +26,7 @@ class BehaviorBlock:
 
 
 class Behavior:
-    def __init__(self, scenario_name: str, object: str, behavior: List[BehaviorBlock]):
+    def __init__(self, scenario_name: str, object: str, behavior: list[BehaviorBlock]):
         self.scenario_name = scenario_name
         self.object = object
         self.behavior = behavior
@@ -36,7 +36,7 @@ class Behavior:
 
 
 class Transition:
-    def __init__(self, from_transition: str, to_transition: str, message_in: str, message_out: List[Tuple[str]], return_v: str):
+    def __init__(self, from_transition: str, to_transition: str, message_in: str, message_out: list[Tuple[str]], return_v: str):
         self.from_transition = from_transition
         self.to_transition = to_transition
         self.message_in = message_in
@@ -48,7 +48,7 @@ class Transition:
 
 
 class IOAutomaton:
-    def __init__(self, states: List[str], transitions: List[Transition]):
+    def __init__(self, states: list[str], transitions: list[Transition]):
         self.states = states
         self.transitions = transitions
 
