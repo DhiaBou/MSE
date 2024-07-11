@@ -1,6 +1,7 @@
 from typing import Tuple
 
-class Scenario:
+
+class Communication:
     def __init__(self, prestate: str, sender: str, operation: str, receiver: str, return_v: str, post_state: str):
         self.prestate = prestate
         self.sender = sender
@@ -10,11 +11,21 @@ class Scenario:
         self.post_state = post_state
 
     def __repr__(self):
-        return f"Scenario({self.prestate}, {self.sender}, {self.operation}, {self.receiver}, {self.return_v}, {self.post_state})"
+        return f"Communication({self.prestate}, {self.sender}, {self.operation}, {self.receiver}, {self.return_v}, {self.post_state})"
+
+
+class Scenario:
+    def __init__(self, name: str, communications: list[Communication]):
+        self.name = name
+        self.communications = communications
+
+    def __repr__(self):
+        return f"Scenario({self.name}, {self.communications})"
 
 
 class BehaviorBlock:
-    def __init__(self, prestate: str, messagee_in: str, messageout: list[Tuple[str,str,str]], return_v: str, poststate: str):
+    def __init__(self, prestate: str, messagee_in: str, messageout: list[Tuple[str, str, str]], return_v: str,
+                 poststate: str):
         self.prestate = prestate
         self.messagee_in = messagee_in
         self.messageout = messageout
@@ -26,7 +37,7 @@ class BehaviorBlock:
 
 
 class Behavior:
-    def __init__(self, scenario_name: str, object: str, behavior: list[BehaviorBlock]):
+    def __init__(self,scenario_name:str,   object: str, behavior: list[BehaviorBlock]):
         self.scenario_name = scenario_name
         self.object = object
         self.behavior = behavior
@@ -36,7 +47,8 @@ class Behavior:
 
 
 class Transition:
-    def __init__(self, from_transition: str, to_transition: str, message_in: str, message_out: list[Tuple[str]], return_v: str):
+    def __init__(self, from_transition: str, to_transition: str, message_in: str, message_out: list[Tuple[str]],
+                 return_v: str):
         self.from_transition = from_transition
         self.to_transition = to_transition
         self.message_in = message_in
