@@ -47,7 +47,7 @@ class Behavior:
 
 
 class Transition:
-    def __init__(self, from_transition: str, to_transition: str, message_in: str, message_out: list[Tuple[str]],
+    def __init__(self, from_transition: str, to_transition: str, message_in: str, message_out: list[Tuple[str, str, str]],
                  return_v: str):
         self.from_transition = from_transition
         self.to_transition = to_transition
