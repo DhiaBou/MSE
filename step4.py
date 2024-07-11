@@ -1,6 +1,5 @@
 import os
-from os.path import abspath
-from typing import Dict, List, Optional
+from typing import Dict
 from models import *
 from model4 import *
 
@@ -196,8 +195,6 @@ class IO2UML:
         return (
             [state for state in self.state_machine.states if state.label == state_label]
         )[0]
-
-    import os
 
     def generate_pydot_graph(self):
         graph = pydot.Dot(graph_type="digraph")
