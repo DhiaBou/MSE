@@ -73,5 +73,3 @@ def generate_table_from_model(file_path):
             scenarios.append(scenario)
 
     return scenarios
-scenarios = generate_table_from_model("MDD_Model.uml")
-print(scenarios)
