@@ -1,4 +1,4 @@
-from MSE.models import CompositeState
+from models import CompositeState
 
 
 def get_composite_states(automat) -> list[CompositeState]:
