@@ -1,0 +1,19 @@
+@startuml
+state "verifyCardWithBank" as verifyCardWithBank {
+  state "entry" as verifyCardWithBank_entry
+  state "do / \ncheck := .verifyCardWithBank" as state_1
+  verifyCardWithBank_entry --> state_1
+  state "do / \n" as state_2
+  state "X exit1" as exit1
+  state_2 --> exit1
+  state "do / \n" as state_3
+  state "X exit2" as exit2
+  state_3 --> exit2
+  state "do / \n" as state_4
+  state "X exit3" as exit3
+  state_4 --> exit3
+  state_1 --> state_2 : [check = badBankAccount]
+  state_1 --> state_3 : [check = badBankPassword]
+  state_1 --> state_4 : [check = OK]
+}
+@enduml

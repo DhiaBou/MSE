@@ -1,0 +1,9 @@
+@startuml
+state "takeCard" as takeCard {
+  state "entry" as takeCard_entry
+  state "do / \nuser.displayMainScreen\n" as state_1
+  state "X exit1" as exit1
+  state_1 --> exit1
+  takeCard_entry --> state_1
+}
+@enduml
