@@ -1,0 +1,9 @@
+@startuml
+state "cancel" as cancel {
+  state "entry" as cancel_entry
+  state "do / \nuser.canceledMessage\nuser.ejectCard\nuser.requestTakeCard\n" as state_1
+  state "X exit1" as exit1
+  state_1 --> exit1
+  cancel_entry --> state_1
+}
+@enduml
