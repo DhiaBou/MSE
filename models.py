@@ -58,6 +58,17 @@ class Transition:
     def __repr__(self):
         return f"Transition({self.from_transition}, {self.to_transition}, {self.message_in}, {self.message_out}, {self.return_v})"
 
+    def __eq__(self, other):
+        if not isinstance(other, Transition):
+            return False
+
+        return (self.from_transition == other.from_transition and
+            self.to_transition == other.to_transition and
+            self.message_in == other.message_in and
+            self.message_out == other.message_out and
+            self.return_v == other.return_v)
+
+
 
 class IOAutomaton:
     def __init__(self, states: list[str], transitions: list[Transition]):

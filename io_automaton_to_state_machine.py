@@ -24,26 +24,26 @@ def get_state_machine(automat: IOAutomaton) -> StateMachine:
                 label = transition.message_in
                 if label not in actions:
                     actions.append(label)
-                transition_state_machine.append(
+                transition_temp_from = (
                     Transition(
                         from_transition=transition.from_transition,
                         to_transition=label,
                         message_in=label,
                         message_out=[],
                         return_v=""
-                    )
-                )
-                transition_state_machine.append(
-                    Transition
+                    ))
+                if transition_temp_from not in transition_state_machine:
+                    transition_state_machine.append(transition_temp_from)
+                transition_temp_to = (Transition
                         (
                         from_transition=label,
                         to_transition=transition.to_transition,
                         message_in="exit1",
                         message_out=[],
                         return_v=transition.return_v
-                    )
-
-                )
+                    ))
+                if transition_temp_to not in transition_state_machine:
+                    transition_state_machine.append(transition_temp_to)
 
     return StateMachine(
         states=states_from_io,
@@ -53,7 +53,7 @@ def get_state_machine(automat: IOAutomaton) -> StateMachine:
     )
 
 
-def get_state_machines(io_automata: dict[str, IOAutomaton]):
+def get_state_machines(io_automata: dict[str, IOAutomaton]) -> dict[str, StateMachine]:
     state_machines = {}
     for obj, io_auomtaton in io_automata.items():
         state_machines[obj] = get_state_machine(io_auomtaton)

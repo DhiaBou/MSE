@@ -1,7 +1,8 @@
 import os
 
+from visualizer_statemachine import visualize_state_machine
 from io_automaton_to_composite import get_composite_states
-from io_automaton_to_state_machine import get_state_machine
+from io_automaton_to_state_machine import get_state_machine, get_state_machines
 from visualizer_composite import visualize_composite_state_state_machines
 from models import *
 from typing import Dict, List
@@ -24,6 +25,11 @@ automaton_visualizer(io_automata, io_automata_artefacts_folder)
 
 for obj, automat in io_automata.items():
     composite_states = get_composite_states(automat)
+    state_machine = get_state_machine(automat)
+    print(state_machine)
     for composite_state in composite_states:
         visualize_composite_state_state_machines(f"{uml_artefacts_folder}/{obj}", composite_states)
+
+state_machines = get_state_machines(io_automata)
+visualize_state_machine(state_machines, f"{uml_artefacts_folder}")
 
