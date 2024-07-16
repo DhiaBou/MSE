@@ -66,3 +66,42 @@ class IOAutomaton:
 
     def __repr__(self):
         return f"IOAutomaton({self.states}, {self.transitions})"
+    
+class CompositeState:
+    name: str # same as message_in
+
+    # if empty do one node: so actions is len 1. if not empty, write the check in the first box
+    # then come a list of actions
+    check: dict[str, list[str]]
+    actions: list[str]
+
+    # example enterpassword:
+    # check = {"consortium.verifyaccount" : [Ok, badPassword, badAccount]}
+    # actions  = ["", "user.requestPassword", "user.BadAccountMessage \n user.printReceipt \n user.ejectCard"]
+
+    # example cancel:
+    # check = {}
+    # actions = ["user.canceledMessage, user.ejectCard, user.requestTakeCard"]
+
+    def __init__(self, name: str, check: dict[str, list[str]], actions: list[str]):
+        self.name = name
+        self.check = check
+        self.actions = actions
+
+    def __repr__(self) -> str:
+        return f"CompositeState(name='{self.name}', check={self.check}, actions={self.actions})"
+
+class StateMachine:
+    first_state: str # should be in states
+    states: list[str] # mouraba3
+    actions: list[str] # mou3ayan
+    transitions: list[tuple[str, str, str]] # from, to, message
+
+    def __init__(self, first_state: str, states: list[str], actions: list[str], transitions: list[tuple[str, str, str]]):
+        self.first_state = first_state
+        self.states = states
+        self.actions = actions
+        self.transitions = transitions
+
+    def __repr__(self) -> str:
+        return f"StateMachine(first_state='{self.first_state}', states={self.states}, actions={self.actions}, transitions={self.transitions})"
