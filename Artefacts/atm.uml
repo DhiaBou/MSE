@@ -1,0 +1,35 @@
+@startuml
+[*] --> WaitCard
+state WaitCard
+state WaitPassword
+state WaitTakeCard
+state WaitAmount
+state insertCard
+state enterPassword
+state cancel
+state takeCard
+WaitCard --> insertCard : insertCard  /  
+insertCard --> WaitPassword : exit1  / void 
+WaitPassword --> enterPassword : enterPassword  /  
+enterPassword --> WaitTakeCard : exit1  / void 
+WaitPassword --> enterPassword : enterPassword  /  
+enterPassword --> WaitPassword : exit1  / void 
+WaitPassword --> enterPassword : enterPassword  /  
+enterPassword --> WaitAmount : exit1  / void 
+WaitPassword --> enterPassword : enterPassword  /  
+enterPassword --> WaitTakeCard : exit1  / void 
+WaitPassword --> enterPassword : enterPassword  /  
+enterPassword --> WaitPassword : exit1  / void 
+WaitPassword --> enterPassword : enterPassword  /  
+enterPassword --> WaitAmount : exit1  / void 
+WaitPassword --> cancel : cancel  /  
+cancel --> WaitTakeCard : exit1  / void 
+WaitPassword --> enterPassword : enterPassword  /  
+enterPassword --> WaitTakeCard : exit1  / void 
+WaitPassword --> enterPassword : enterPassword  /  
+enterPassword --> WaitPassword : exit1  / void 
+WaitPassword --> enterPassword : enterPassword  /  
+enterPassword --> WaitAmount : exit1  / void 
+WaitTakeCard --> takeCard : takeCard  /  
+takeCard --> WaitCard : exit1  / void 
+@enduml

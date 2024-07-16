@@ -92,16 +92,15 @@ class CompositeState:
         return f"CompositeState(name='{self.name}', check={self.check}, actions={self.actions})"
 
 class StateMachine:
-    first_state: str # should be in states
     states: list[str] # mouraba3
     actions: list[str] # mou3ayan
-    transitions: list[tuple[str, str, str]] # from, to, message
+    transitions: list[Transition]
 
-    def __init__(self, first_state: str, states: list[str], actions: list[str], transitions: list[tuple[str, str, str]]):
-        self.first_state = first_state
+    def __init__(self,  states: list[str], actions: list[str], transitions: list[Transition]):
+
         self.states = states
         self.actions = actions
         self.transitions = transitions
 
     def __repr__(self) -> str:
-        return f"StateMachine(first_state='{self.first_state}', states={self.states}, actions={self.actions}, transitions={self.transitions})"
+        return f"StateMachine( states={self.states}, actions={self.actions}, transitions={self.transitions})"
