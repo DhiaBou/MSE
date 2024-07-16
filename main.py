@@ -8,7 +8,7 @@ from typing import Dict, List
 
 from step1 import generate_table_from_model
 from step2 import get_behaviors
-from step3 import get_io_from_behavior, visualizer
+from step3 import get_io_from_behavior, automaton_visualizer
 from step4 import IO2UML
 
 artefacts_folder = "Artefacts"
@@ -18,7 +18,7 @@ io_automata_artefacts_folder = f"{artefacts_folder}/IOAutomata"
 scenarios = generate_table_from_model("./inputs/MDD_Model.uml")
 behaviors = get_behaviors(scenarios)
 io_automata = get_io_from_behavior(behaviors)
-visualizer(io_automata, io_automata_artefacts_folder)
+automaton_visualizer(io_automata, io_automata_artefacts_folder)
 
 
 

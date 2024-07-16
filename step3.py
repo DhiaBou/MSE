@@ -53,7 +53,7 @@ def get_io_from_behavior(behaviors: List[Behavior]) -> Dict[str, IOAutomaton]:
     return automata
 
 
-def visualizer(io_automata: Dict[str, IOAutomaton], output_dir) -> None:
+def automaton_visualizer (io_automata: Dict[str, IOAutomaton], output_dir) -> None:
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
