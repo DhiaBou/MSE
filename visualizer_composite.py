@@ -1,3 +1,4 @@
+# STEP 4.1.2
 import pydot
 import os
 from typing import Dict, List
@@ -72,7 +73,7 @@ def generate_composite_pydot_graph(machine: CompositeState) -> pydot.Dot:
     graph.add_subgraph(subgraph)
     return graph
 
-def visualize_composite_state_state_machines(filepath: str, composite_states: List[CompositeState]):
+def visualize_composite_state_state_machines(composite_states: List[CompositeState], filepath: str):
     # Ensure the directory exists
     if not os.path.exists(filepath):
         os.makedirs(filepath)

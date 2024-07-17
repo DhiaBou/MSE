@@ -1,12 +1,13 @@
+# STEP 4.2.2
 import os
 from typing import Dict
-
 import pydot
-
 from models import StateMachine
 
 
 def visualize_state_machine(state_machines: Dict[str, StateMachine], path):
+    if not os.path.exists(path):
+        os.makedirs(path)
     for obj, state_machine in state_machines.items():
         start_state = state_machine.transitions[0].from_transition
 

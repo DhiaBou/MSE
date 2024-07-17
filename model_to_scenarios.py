@@ -1,3 +1,4 @@
+# STEP 1
 from xml.dom.minidom import parse
 from models import Communication, Scenario
 

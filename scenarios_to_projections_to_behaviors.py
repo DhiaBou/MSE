@@ -1,5 +1,4 @@
-# Omar
-# key is object, value is list of scenarios
+# STEP 2
 from collections import defaultdict
 
 from models import *
@@ -26,7 +25,6 @@ def table_to_projections(table: list[Communication]) -> dict[str: list[Communica
     return dict(projections)
 
 
-# Omar
 def projections_to_behavior(scenario_name: str, projections: dict[str, list[Communication]]) -> list[Behavior]:
     behaviors = []
     for obj, scenarios in projections.items():

@@ -1,12 +1,7 @@
-# KARIM OR MALEK if you are ready, discuss the next steps
-
-
+# STEP 3
 from models import *
 from typing import Dict, List
-
-
 import pydot
-
 import os
 
 
