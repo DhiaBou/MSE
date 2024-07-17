@@ -5,7 +5,9 @@ def get_composite_states(automat) -> list[CompositeState]:
     composite_states = []
     
     message_in_map = {}
-    for transition in automat.transitions:
+    iotransitions_sorted = (automat.transitions.copy())
+    iotransitions_sorted.sort(key=lambda x: x.to_transition)
+    for transition in iotransitions_sorted:
         if transition.message_in not in message_in_map:
             message_in_map[transition.message_in] = []
         message_in_map[transition.message_in].append(transition)
