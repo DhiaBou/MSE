@@ -7,7 +7,6 @@ import os
 
 def get_io_from_behavior(behaviors: List[Behavior]) -> Dict[str, IOAutomaton]:
     automata = {}
-
     for behavior in behaviors:
         obj = behavior.object
         if obj not in automata:
@@ -44,7 +43,6 @@ def get_io_from_behavior(behaviors: List[Behavior]) -> Dict[str, IOAutomaton]:
     for obj, io_automaton in automata.items():
         for transition in io_automaton.transitions:
             transition.message_out = list(dict.fromkeys(transition.message_out))
-        io_automaton.states = list(io_automaton.states)
     return automata
 
 

@@ -10,14 +10,12 @@ def generate_composite_uml_string(machine: CompositeState) -> str:
     uml_string += f'  state "entry" as {machine.name}_entry\n'
 
     if not machine.check:
-        # If check is empty, create a single state with the actions
         actions = "do / \\n" + "\\n".join(machine.actions)
         uml_string += f'  state "{actions}" as state_1\n'
         uml_string += f'  {machine.name}_entry --> state_1\n'
         uml_string += f'  state_1 --> exit1\n'
         uml_string += f'  state "X exit1" as exit1\n'
     else:
-        # If there are checks, create the necessary states and transitions
         check_name, outcomes = next(iter(machine.check.items()))
         check_action = "do / \\ncheck := " + check_name
         uml_string += f'  state "{check_action}" as state_1\n'
@@ -35,15 +33,10 @@ def generate_composite_uml_string(machine: CompositeState) -> str:
 
 def generate_composite_pydot_graph(machine: CompositeState) -> pydot.Dot:
     graph = pydot.Dot(graph_type="digraph")
-
-    # Add composite state as a cluster
     subgraph = pydot.Cluster(machine.name, label=machine.name, style="rounded")
-
-    # Add entry node to the subgraph
     subgraph.add_node(pydot.Node(f"{machine.name}_entry", shape="circle", label="", fixedsize="true", width=0.2, height=0.2))
 
     if not machine.check:
-        # If check is empty, create a single state with the actions
         label = f"do / \\n" + "\\n".join(machine.actions)
         state_id = f"state_1"
         subgraph.add_node(pydot.Node(state_id, label=label, shape="box", labelloc="t"))
@@ -52,7 +45,6 @@ def generate_composite_pydot_graph(machine: CompositeState) -> pydot.Dot:
         subgraph.add_node(pydot.Node(exit_id, shape="circle", label="           X   "+exit_id, fixedsize="true", width=0.2, height=0.2))
         subgraph.add_edge(pydot.Edge(state_id, exit_id))
     else:
-        # If there are checks, create the necessary states and transitions
         check_name, outcomes = next(iter(machine.check.items()))
         check_action = "do / \\ncheck := " + check_name
         check_state_id = f"state_1"
@@ -74,7 +66,6 @@ def generate_composite_pydot_graph(machine: CompositeState) -> pydot.Dot:
     return graph
 
 def visualize_composite_state_state_machines(composite_states: List[CompositeState], filepath: str):
-    # Ensure the directory exists
     if not os.path.exists(filepath):
         os.makedirs(filepath)
 
