@@ -58,9 +58,10 @@ def visualize_state_machine(state_machines: Dict[str, StateMachine], path):
             from_state = transition.from_transition
             to_state = transition.to_transition
             arrowhead = "normal" if from_state in state_machine.states else "onormal"
+            arrowtail = "dot" if from_state  in state_machine.actions else ""
             label = f"{transition.message_in}" + "/" + f"{transition.return_v}"
 
-            graph.add_edge(pydot.Edge(from_state, to_state, label = label, arrowhead = arrowhead))
+            graph.add_edge(pydot.Edge(from_state, to_state, label = label, arrowhead = arrowhead, arrowtail = arrowtail))
 
         # Save the graph as a jpg file
         graph.write_jpg(jpg_filename)
