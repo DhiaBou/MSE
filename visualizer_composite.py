@@ -65,7 +65,7 @@ def generate_composite_pydot_graph(machine: CompositeState) -> pydot.Dot:
             exit_id = f"exit{idx + 1}"
 
             subgraph.add_node(pydot.Node(state_id, label=actions, shape="box", labelloc="t"))
-            subgraph.add_node(pydot.Node(exit_id, shape="circle", label="X", fixedsize="true", width=0.2, height=0.2))
+            subgraph.add_node(pydot.Node(exit_id, shape="circle", label="           X   "+exit_id, fixedsize="true", width=0.2, height=0.2))
             subgraph.add_edge(pydot.Edge(state_id, exit_id))
             subgraph.add_edge(pydot.Edge(check_state_id, state_id, label=f"[check = {outcome}]"))
 
