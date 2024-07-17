@@ -1,9 +1,11 @@
 @startuml
 state "cancel" as cancel {
   state "entry" as cancel_entry
-  state "do / \nuser.canceledMessage\nuser.ejectCard\nuser.requestTakeCard\n" as state_1
-  state "X exit1" as exit1
-  state_1 --> exit1
+  state "do / \nuser.canceledMessage 
+ user.ejectCard 
+ user.requestTakeCard" as state_1
   cancel_entry --> state_1
+  state_1 --> exit1
+  state "X exit1" as exit1
 }
 @enduml

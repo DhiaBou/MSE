@@ -1,0 +1,9 @@
+@startuml
+[*] --> WaitBankVerify
+state WaitBankVerify
+state verifyCardWithBank
+WaitBankVerify --> verifyCardWithBank : verifyCardWithBank  /  
+verifyCardWithBank --> WaitBankVerify : exit1  / badBankAccount 
+verifyCardWithBank --> WaitBankVerify : exit2  / badBankPassword 
+verifyCardWithBank --> WaitBankVerify : exit3  / OK 
+@enduml

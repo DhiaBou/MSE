@@ -1,0 +1,9 @@
+@startuml
+[*] --> WaitVerify
+state WaitVerify
+state verifyAccount
+WaitVerify --> verifyAccount : verifyAccount  /  
+verifyAccount --> WaitVerify : exit1  / badAccount 
+verifyAccount --> WaitVerify : exit2  / badPassword 
+verifyAccount --> WaitVerify : exit3  / OK 
+@enduml

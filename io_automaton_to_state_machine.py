@@ -14,11 +14,13 @@ def get_state_machine(automat: IOAutomaton) -> StateMachine:
     actions = []
     transitions_from_io = automat.transitions
     transition_state_machine = []
-
+    iotransitions_sorted = transitions_from_io.copy()
+    iotransitions_sorted.sort(key=lambda x: x.to_transition)
     for state in states_from_io:
         incoming_messages = _io_in_messages(state=state, automat=automat)
         for message_in in incoming_messages:
-            for transition in transitions_from_io:
+            exit_nr = 1
+            for transition in iotransitions_sorted:
                 if transition.from_transition != state or transition.message_in != message_in:
                     continue
                 label = transition.message_in
@@ -38,17 +40,20 @@ def get_state_machine(automat: IOAutomaton) -> StateMachine:
                         (
                         from_transition=label,
                         to_transition=transition.to_transition,
-                        message_in="exit1",
+                        message_in=f"exit{exit_nr}",
                         message_out=[],
                         return_v=transition.return_v
                     ))
                 if transition_temp_to not in transition_state_machine:
                     transition_state_machine.append(transition_temp_to)
 
+
+                exit_nr += 1
+
     return StateMachine(
         states=states_from_io,
         actions=actions,
-        transitions=transition_state_machine,
+        transitions=transition_state_machine
 
     )
 

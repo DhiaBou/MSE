@@ -1,9 +1,9 @@
 @startuml
 state "insertCard" as insertCard {
   state "entry" as insertCard_entry
-  state "do / \nuser.requestPassword\n" as state_1
-  state "X exit1" as exit1
-  state_1 --> exit1
+  state "do / \nuser.requestPassword" as state_1
   insertCard_entry --> state_1
+  state_1 --> exit1
+  state "X exit1" as exit1
 }
 @enduml
