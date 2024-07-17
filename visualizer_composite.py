@@ -1,15 +1,7 @@
 import pydot
 import os
 from typing import Dict, List
-
-class CompositeState:
-    def __init__(self, name: str, check: Dict[str, List[str]], actions: List[str]):
-        self.name = name
-        self.check = check
-        self.actions = actions
-
-    def __repr__(self) -> str:
-        return f"CompositeState(name='{self.name}', check={self.check}, actions={self.actions})"
+from models import CompositeState
 
 def generate_composite_uml_string(machine: CompositeState) -> str:
     uml_string = "@startuml\n"

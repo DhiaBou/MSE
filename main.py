@@ -1,16 +1,10 @@
-import os
-
+from step1 import generate_table_from_model
+from step2 import get_behaviors
+from step3 import get_io_from_behavior, automaton_visualizer
 from visualizer_statemachine import visualize_state_machine
 from io_automaton_to_composite import get_composite_states
 from io_automaton_to_state_machine import get_state_machine, get_state_machines
 from visualizer_composite import visualize_composite_state_state_machines
-from models import *
-from typing import Dict, List
-
-from step1 import generate_table_from_model
-from step2 import get_behaviors
-from step3 import get_io_from_behavior, automaton_visualizer
-from step4 import IO2UML
 
 artefacts_folder = "Artefacts"
 uml_artefacts_folder = f"{artefacts_folder}/Uml"
