@@ -12,8 +12,14 @@ state_machine_artefacts_folder = f"{artefacts_folder}/StateMachines"
 io_automata_artefacts_folder = f"{artefacts_folder}/IOAutomata"
 
 scenarios = generate_table_from_model("./inputs/MDD_Model.uml")
+print('======Scenarios======')
+print(scenarios)
 behaviors = get_behaviors(scenarios)
+print('======behaviors======')
+print(behaviors)
 io_automata = get_io_from_behavior(behaviors)
+print('======IOAutomata======')
+print(io_automata)
 
 for obj, automat in io_automata.items():
     composite_states = get_composite_states(automat)
